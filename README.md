@@ -5,7 +5,6 @@ This is a simple to-do list application built using the MERN (MongoDB, Express.j
 ## Features
 
 - Add, edit, and delete tasks
-- Centralized state management using React Context API
 - MongoDB for data storage
 - Express.js for the backend API
 - React Router for navigation
