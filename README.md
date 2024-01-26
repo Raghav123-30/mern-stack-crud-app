@@ -30,6 +30,10 @@ This is a simple to-do list application built using the MERN (MongoDB, Express.j
 
 - Node.js and npm installed
 - MongoDB Atlas account (for database)
+- find your connection URI and store it in .env in backend directory
+
+  ``` bash
+  MONGO_URI=""
 
 ### Installation
 
@@ -45,5 +49,5 @@ This is a simple to-do list application built using the MERN (MongoDB, Express.j
    npm install
    cd ../backend/
    npm install
-   npm start
-   npm run dev
+   npm start  #inside backend directory
+   npm run dev  #inside frintend directory
