@@ -2,7 +2,7 @@ function AddTaskPage() {
   return (
     <div className="card">
       <input placeholder="Title"></input>
-      <input placeholder="Description"></input>
+      <textarea placeholder="Description"></textarea>
       <button className="btn">Submit</button>
     </div>
   );

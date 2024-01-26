@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 :root {
-  --bg: #121212;
-  --bgSoft: #1a1a1a;
-  --text: #e0e0e0;
-  --textSoft: #808080;
-  --borderColor: rgba(0, 128, 255, 0.395);
+  --bg: #020617;
+  --bgSoft: #0f172a;
+  --text: "whitesmoke";
+  --textSoft: #f1f5f9;
+  --borderColor: rgba(6, 20, 33, 0.395);
 }
 
 body {
@@ -34,6 +34,7 @@ a {
   text-transform: uppercase;
   font-size: medium;
   background-color: var(--bgSoft);
+  color: white;
   border-radius: 8px;
   margin-bottom: 16px;
   border: 1px solid var(--borderColor);
@@ -50,7 +51,7 @@ a {
   margin: 24px 0;
 }
 .task-card {
-  padding: 24px 30px;
+  padding: 16px 20px;
   background-color: var(--bgSoft);
   display: flex;
   justify-content: space-between;
@@ -61,9 +62,9 @@ a {
   margin: 24px 0;
 }
 .task-card h1 {
-  color: var(--text);
+  color: whitesmoke;
 }
-.task-card h2 {
+.task-card p {
   color: var(--textSoft);
 }
 .task-card button {
@@ -71,12 +72,13 @@ a {
   border: none;
   cursor: pointer;
 }
-input {
+input,
+textarea {
   background-color: var(--bg);
   outline: none;
   border: none;
   color: white;
-  padding: 12px 32px;
+  padding: 24px 32px;
   border: 1px solid var(--borderColor);
   border-radius: 8px;
 }
@@ -84,23 +86,24 @@ input {
 .btn {
   padding: 0.5rem 0.75rem;
   width: fit-content;
-  background-color: rgb(11, 172, 11);
+  background-color: #3b82f6;
   border: none;
   color: var(--text);
+  font-weight: bold;
   border-radius: 0.5rem;
   cursor: pointer;
   outline: none;
 }
 
 .btn:hover {
-  background-color: rgb(9, 133, 9);
+  background-color: #1e40af;
 }
 .edit-delete-buttons {
   display: flex;
   gap: 8px;
 }
 .edit-button {
-  color: white;
+  color: var(--textSoft);
 }
 .delete-button {
   color: red;
