@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 require("dotenv").config();
 import cors from "cors";
 import { connectToDatabase } from "./db";
-import mongoose from "mongoose";
+
 import { task } from "./models/task";
 
 const app = express();
@@ -19,7 +19,19 @@ app.get("/api/tasks", async (req, res) => {
     res.status(400).send(error);
   }
 });
-
+app.post("/api/tasks", async (req, res) => {
+  try {
+    const { title, description } = req.body;
+    const newTask = new task({
+      title: title,
+      description: description,
+    });
+    await newTask.save();
+    res.status(201).send(newTask);
+  } catch {
+    res.status(400).send({ message: "something went wrong" });
+  }
+});
 app.listen(3000, () => {
   console.log("Listening on port 3000");
 });
