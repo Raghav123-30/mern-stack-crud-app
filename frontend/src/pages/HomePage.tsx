@@ -21,18 +21,20 @@ function HomePage() {
   }, []);
   if (serverError) {
     return (
-      <div className="main">
+      <div className="error-container">
         <p className="error">Something went wrong, please try again later</p>
       </div>
     );
   } else {
     return (
       <div>
+        {allTasks.length == 0 && <p>No tasks yet...</p>}
         {allTasks.map((item) => (
           <TaskItem
+            _id={item._id}
             title={item.title}
             description={item.description}
-            key={item.id}
+            key={item._id}
           />
         ))}
       </div>

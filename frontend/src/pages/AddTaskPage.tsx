@@ -5,25 +5,29 @@ import { useNavigate } from "react-router-dom";
 
 function AddTaskPage() {
   const [task, setTask] = useState<task>({
-    id: "",
+    _id: "",
     title: "",
     description: "",
   });
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const onSubmit = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/tasks",
-        task
-      );
-      if (response.status == 201) {
-        navigate("/");
-      }
-    } catch (error) {
-      if (isAxiosError(error)) {
-        if (error.status == 400) {
-          setError(true);
+    if (task.title.length < 3 && task.description.length < 3) {
+      alert("Please provide valid data");
+    } else {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/tasks",
+          task
+        );
+        if (response.status == 201) {
+          navigate("/");
+        }
+      } catch (error) {
+        if (isAxiosError(error)) {
+          if (error.status == 400) {
+            setError(true);
+          }
         }
       }
     }

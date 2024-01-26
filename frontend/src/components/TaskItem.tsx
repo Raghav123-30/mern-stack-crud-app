@@ -1,11 +1,33 @@
 import { MdEdit, MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { task } from "../models/task";
+import axios from "axios";
 
-interface TaskItemProps {
-  title: string;
-  description: string;
-}
+function TaskItem({ _id, title, description }: task) {
+  const navigate = useNavigate();
+  const onEditRequested = () => {
+    navigate("/edit-task", { state: { _id: _id } });
+  };
+  const onDeleteRequested = async () => {
+    const userConfirmation = confirm(
+      "Are you sure,you want to delete the task?"
+    );
+    try {
+      if (userConfirmation) {
+        const response = await axios.post("http://localhost:3000/api/task", {
+          _id: _id,
+        });
 
-function TaskItem({ title, description }: TaskItemProps) {
+        if (response.status == 200) {
+          navigate("/", { replace: true });
+        } else {
+          alert("something went wrong,please try again later");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="task-card">
       <div>
@@ -13,10 +35,14 @@ function TaskItem({ title, description }: TaskItemProps) {
         <p>{description}</p>
       </div>
       <div>
-        <button className="edit-delete-buttons">
-          <MdEdit size={24} className="edit-button" />
-          <MdDelete size={24} className="delete-button" />
-        </button>
+        <div className="edit-delete-buttons">
+          <button onClick={onEditRequested}>
+            <MdEdit size={24} className="edit-button" />
+          </button>
+          <button onClick={onDeleteRequested}>
+            <MdDelete size={24} className="delete-button" />
+          </button>
+        </div>
       </div>
     </div>
   );
